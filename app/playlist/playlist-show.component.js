@@ -18,7 +18,7 @@
 
 			playlistService.getPlaylist(playlistId).then(playlist => {
 				vm.playlist = playlist
-				// console.log(vm.playlist)
+				console.log(vm.playlist)
 			})
 				// .then(playlist => vm.playlist = playlist)
 		}
