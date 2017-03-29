@@ -1,0 +1,22 @@
+<section class="col-md-6">
+
+	<h1>Playlists</h1>
+	<hr>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Date Created</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="playlist in $ctrl.playlists">
+				<td>{{playlist.id}}</td>
+				<td><a ui-sref="show-playlist({id:playlist.id})">{{playlist.name}}</a></td>
+				<td>{{playlist.date_created}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
