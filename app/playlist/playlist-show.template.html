@@ -4,4 +4,9 @@
 	<small>Created: {{$ctrl.playlist.date_created}}</small>
 	<hr>
 
+	<ul>
+		<li ng-repeat="song in $ctrl.playlist.songs">
+			{{song.name}}
+		</li>
+	</ul>
 </section>

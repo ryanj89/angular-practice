@@ -19,11 +19,18 @@
 		}
 
 		function getPlaylist(id) {
-			return $http.get(`https://wedj.herokuapp.com/playlist/${id}`).then(playlistResponse => {
-				const playlist = playlistResponse.data
-				console.log(playlist)
-				return playlist
-			})
+			return Promise.all([$http.get(`https://wedj.herokuapp.com/playlist/${id}`), $http.get(`https://wedj.herokuapp.com/playlist_song/playlist/${id}`)])
+				.then(response => {
+					const playlist = response[0].data
+					const playlistSongs = response[1].data
+					playlist.songs = []
+					const songs = playlistSongs.map(song => {
+						return $http.get(`https://wedj.herokuapp.com/song/${song.s_id}`).then(songResponse => {
+							playlist.songs.push(songResponse.data)
+						})
+					})
+					return playlist
+				})
 		}
 	}
 }())
